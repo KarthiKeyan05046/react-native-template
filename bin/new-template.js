@@ -1,65 +1,112 @@
 #!/usr/bin/env node
-
+const fs = require('fs');
 const gradient = require('gradient-string');
 const { execSync } = require('child_process');
 const { default: inquirer } = require('inquirer');
-const createSpinner  = require('nanospinner').createSpinner
+const createSpinner = require('nanospinner').createSpinner;
+
 console.log(gradient('grey', 'white')('---------------------------------------------------------\n'));
-const welcomeMessage = gradient('cyan', 'pink')('           Wᴇʟᴄᴏᴍᴇ Dᴇᴠᴇʟᴏᴘᴇʀ')
+const welcomeMessage = gradient('cyan', 'pink')('           Welcome Developer');
 console.log(gradient('grey', 'white')('---------------------------------------------------------'));
 console.log(welcomeMessage);
 console.log(`---------------------------------------------------------`);
-console.log(`
-    
-    `);
 
 let reactNativeArt = [
-    `
-
-    ██████╗░███████╗░█████╗░░█████╗░████████╗  ███╗░░██╗░█████╗░████████╗██╗██╗░░░██╗███████╗
-    ██╔══██╗██╔════╝██╔══██╗██╔══██╗╚══██╔══╝  ████╗░██║██╔══██╗╚══██╔══╝██║██║░░░██║██╔════╝
-    ██████╔╝█████╗░░███████║██║░░╚═╝░░░██║░░░  ██╔██╗██║███████║░░░██║░░░██║╚██╗░██╔╝█████╗░░
-    ██╔══██╗██╔══╝░░██╔══██║██║░░██╗░░░██║░░░  ██║╚████║██╔══██║░░░██║░░░██║░╚████╔╝░██╔══╝░░
-    ██║░░██║███████╗██║░░██║╚█████╔╝░░░██║░░░  ██║░╚███║██║░░██║░░░██║░░░██║░░╚██╔╝░░███████╗
-    ╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░  ╚═╝░░╚══╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚══════╝
-    
-    ░█████╗░░░░███████╗███████╗
-    ██╔══██╗░░░╚════██║██╔════╝
-    ██║░░██║░░░░░░░██╔╝██████╗░
-    ██║░░██║░░░░░░██╔╝░╚════██╗
-    ╚█████╔╝██╗░░██╔╝░░██████╔╝
-    ░╚════╝░╚═╝░░╚═╝░░░╚═════╝░  New Template By Karthi Keyan
-    `
+  `
+  ██████╗░███████╗░█████╗░░█████╗░████████╗  ███╗░░██╗░█████╗░████████╗██╗██╗░░░██╗███████╗
+  ██╔══██╗██╔════╝██╔══██╗██╔══██╗╚══██╔══╝  ████╗░██║██╔══██╗╚══██╔══╝██║██║░░░██║██╔════╝
+  ██████╔╝█████╗░░███████║██║░░╚═╝░░░██║░░░  ██╔██╗██║███████║░░░██║░░░██║╚██╗░██╔╝█████╗░░
+  ██╔══██╗██╔══╝░░██╔══██║██║░░██╗░░░██║░░░  ██║╚████║██╔══██║░░░██║░░░██║░╚████╔╝░██╔══╝░░
+  ██║░░██║███████╗██║░░██║╚█████╔╝░░░██║░░░  ██║░╚███║██║░░██║░░░██║░░░██║░░╚██╔╝░░███████╗
+  ╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░  ╚═╝░░╚══╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░░╚═╝░░░╚══════╝
+  
+  ░█████╗░░░░███████╗███████╗
+  ██╔══██╗░░░╚════██║██╔════╝
+  ██║░░██║░░░░░░░██╔╝██████╗░
+  ██║░░██║░░░░░░██╔╝░╚════██╗
+  ╚█████╔╝██╗░░██╔╝░░██████╔╝
+  ░╚════╝░╚═╝░░╚═╝░░░╚═════╝░  New Template By Karthi Keyan
+  `
 ];
-
-
 
 let reactNativeStyled = reactNativeArt.map(line => gradient('green', 'green')(line)).join('\n');
 console.log(reactNativeStyled);
 
+const getDirectoryName = async () => {
+    const { projectName } = await inquirer.prompt({
+        type: 'input',
+        name: 'projectName',
+        message: 'What is the name of your project?',
+        default: 'MyApp',
+    });
+    return projectName;
+};
+
+const checkDirectory = async () => {
+    let projectDirectory;
+    do {
+        projectDirectory = await getDirectoryName();
+        if (fs.existsSync(projectDirectory)) {
+            const { replace } = await inquirer.prompt({
+                type: 'confirm',
+                name: 'replace',
+                message: `The directory "${projectDirectory}" already exists. Do you want to replace it?`,
+                default: false,
+            });
+            if (replace) {
+                fs.rmSync(projectDirectory, { recursive: true, force: true }); // Remove the existing directory
+            } else {
+                console.log('Please choose a different directory name.');
+                projectDirectory = null; // Reset to prompt again
+            }
+        }
+    } while (!projectDirectory);
+    return projectDirectory;
+};
+
 const questions = [
     {
-      type: 'input',
-      name: 'projectName',
-      message: 'What is the name of your project?',
-      default: 'MyApp',
+        type: 'input',
+        name: 'packageName',
+        message: 'What should be the package name?',
+        default: 'com.example.myapp',
+    },
+    {
+        type: 'list',
+        name: 'packageManager',
+        message: 'Which package manager would you like to use?',
+        choices: ['yarn', 'npm'],
+        default: 'yarn',
+    },
+    {
+        type: 'confirm',
+        name: 'skipGitInit',
+        message: 'Would you like to skip Git initialization?',
+        default: false,
     }
-  ];
+];
 
-inquirer.prompt(questions).then((answers)=>{
- const { projectName } = answers;
- const spinner = createSpinner(`Creating project "${projectName}"...`, {
-    color: 'green',
-    frames: true,
- }).start()
- execSync(
-    `npx react-native@0.75.2 init ${projectName} --template rn-template-by-karthi`,
-    { stdio: 'inherit' }
-  );
-  spinner.success({
-    text: `Project "${projectName}" created successfully!`,
-  })
-}).catch((error) => {
-    const welcomeMessage = gradient('red', 'red')('Something went wrong, please try again');
-    console.log(welcomeMessage)
-})
+const initProject = async () => {
+    const projectDirectory = await checkDirectory();
+    const { packageName, skipGitInit, packageManager } = await inquirer.prompt(questions);
+    const spinner = createSpinner(`Creating project ${projectDirectory}...`, {
+        color: 'green',
+        frames: true,
+    }).start();
+    const APP_VERSION = "0.75.2"
+    const gitInitOption = skipGitInit ? '--skip-git' : '';
+    const query = `npx @react-native-community/cli@latest init ${projectDirectory} --template rn-template-by-karthi --version ${APP_VERSION} --package-name ${packageName} --pm ${packageManager} ${gitInitOption}`;
+    
+    try {
+        execSync(query, { stdio: 'inherit' });
+        spinner.success({
+            text: `Project "${projectDirectory}" created successfully in ${process.cwd()}/${projectDirectory}!`,
+        });
+    } catch (error) {
+        spinner.error({
+            text: 'Project Creation Failed',
+        });
+    }
+};
+
+initProject();

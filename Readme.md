@@ -2,6 +2,7 @@
     <img src="https://mcro.tech/static/efa25805d3c7c3f67bf317cf27af3eb5/3bf79/react-native-banner-min.png" alt="Logo">
 </div>
 
+![NPM Version](https://img.shields.io/npm/v/rn-template-by-karthi)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ## 1: Prerequisites
@@ -44,7 +45,7 @@ Follow instructions for your given `development OS` and `target OS`.
 To create a new project using the boilerplate simply run :
 
 ```
-npx react-native@0.75.2 init MyApp --template https://github.com/KarthiKeyan05046/react-native-template.git
+npx @react-native-community/cli@0.75.2 init MyApp --template https://github.com/KarthiKeyan05046/react-native-template.git
 ```
 
 Assuming you have all the requirements installed, you can run the project by running:

@@ -1,14 +1,14 @@
 {
     "name": "rn-template-by-karthi",
-    "version": "1.0.6",
-    "description": "ArcusDevs React Native Boilerplate",
+    "version": "1.0.7",
+    "description": "React Native Boilerplate",
     "repository": "KarthiKeyan05046/react-native-template",
     "preferGlobal": true,
     "files": [
         "template",
         "template.config.js"
     ],
-    "author": "Arcus Karthikeyan <https://github.com/KarthiKeyan05046>",
+    "author": "Karthikeyan <https://github.com/KarthiKeyan05046>",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/KarthiKeyan05046/react-native-template/issues"
@@ -25,11 +25,16 @@
         "react",
         "native",
         "template",
-        "arcusdevs",
         "react-native",
         "starter-kit"
     ],
     "workspaces": [
         "template/*"
-    ]
+    ],
+    "dependencies": {
+        "chalk": "^5.3.0",
+        "gradient-string": "^2.0.2",
+        "inquirer": "^11.0.2",
+        "nanospinner": "^1.1.0"
+    }
 }
