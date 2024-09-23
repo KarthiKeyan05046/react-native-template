@@ -1,6 +1,6 @@
 {
-    "name": "@KarthiKeyan05046/react-native-template",
-    "version": "1.0.5",
+    "name": "rn-template-by-karthi",
+    "version": "1.0.6",
     "description": "ArcusDevs React Native Boilerplate",
     "repository": "KarthiKeyan05046/react-native-template",
     "preferGlobal": true,
@@ -13,8 +13,11 @@
     "bugs": {
         "url": "https://github.com/KarthiKeyan05046/react-native-template/issues"
     },
+    "bin": {
+        "rn-template-by-karthi": "./bin/new-template.js"
+    },
     "homepage": "https://KarthiKeyan05046.github.io/react-native-template/",
-    "main": "post-init.script.js",
+    "main": "./bin/new-template.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
