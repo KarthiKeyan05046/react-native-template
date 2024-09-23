@@ -19,7 +19,7 @@
     "homepage": "https://KarthiKeyan05046.github.io/react-native-template/",
     "main": "./bin/new-template.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+        "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
         "react",
