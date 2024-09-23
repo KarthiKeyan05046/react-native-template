@@ -3,6 +3,8 @@
 </div>
 
 ![NPM Version](https://img.shields.io/npm/v/rn-template-by-karthi)
+
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 ## 1: Prerequisites
@@ -40,12 +42,21 @@ You also need to install the dependencies required by React Native.
 Go to the [React Native environment setup](https://reactnative.dev/docs/environment-setup), then select `React Native CLI Quickstart` tab.  
 Follow instructions for your given `development OS` and `target OS`.
 
-## Quick start
+## Installation
 
 To create a new project using the boilerplate simply run :
 
+```yarn
+# yarn
+yarn add rn-template-by-karthi
+
+#npm
+npm install --save rn-template-by-karthi
+
 ```
-npx @react-native-community/cli@0.75.2 init MyApp --template https://github.com/KarthiKeyan05046/react-native-template.git
+
+```yarn
+npx rn-template-by-karthi
 ```
 
 Assuming you have all the requirements installed, you can run the project by running:
