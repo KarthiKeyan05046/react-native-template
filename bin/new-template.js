@@ -94,7 +94,7 @@ const initProject = async () => {
         frames: true,
     }).start();
     const APP_VERSION = "0.75.2"
-    const gitInitOption = skipGitInit ? '--skip-git' : '';
+    const gitInitOption = skipGitInit ? '--skip-git-init' : '';
     const query = `npx @react-native-community/cli@latest init ${projectDirectory} --template rn-template-by-karthi --version ${APP_VERSION} --package-name ${packageName} --pm ${packageManager} ${gitInitOption}`;
     
     try {
