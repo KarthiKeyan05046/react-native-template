@@ -26,7 +26,6 @@
         "react-native",
         "starter-kit"
     ],
-    "private": true,
     "workspaces": [
         "template/*"
     ]
