@@ -18,9 +18,9 @@ const DrawerNavigator: React.FC = () => {
         backgroundColor: theme?.colors?.background,
       },
       // eslint-disable-next-line react/no-unstable-nested-components
-      header: (props) => <CustomNavigationBar {...props} />,
+      header: (props) => <CustomNavigationBar {...props}/>,
     }}>
-      <Drawer.Screen  name="Home" component={HomeScreen} />
+      <Drawer.Screen  key={'home'} name="Home" component={HomeScreen} />
     </Drawer.Navigator>
   );
 };

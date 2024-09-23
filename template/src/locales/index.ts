@@ -1,5 +1,5 @@
-import en from '../locales/en/en.json';
-import ta from '../locales/ta/ta.json';
+import en from '../locales/en/en';
+import ta from '../locales/ta/ta';
 import languages from '../locales/languages.json';
 
 export const resources = {

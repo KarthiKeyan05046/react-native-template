@@ -38,7 +38,6 @@ export default function CustomNavigationBar({
       ) : null}
       <Appbar.Content title={title} />
       <Pressable
-        key={'theme button'}
         onPress={(e: GestureResponderEvent) => {
           changeTheme(e, () => toggleTheme());
         }}>

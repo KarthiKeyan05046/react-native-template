@@ -16,7 +16,7 @@ const HomeScreen: React.FC<HomeScreen> = ({ t }) => {
     <SafeAreaView style={[styles.container, {
       backgroundColor: themeColors.colors.background,
     }]}>
-    <Text style={[styles.welcomeMessage, {color: themeColors.colors.onBackground}]}>{t('welcome', {appName: project.name})}</Text>
+    <Text style={[styles.welcomeMessage, {color: themeColors.colors.onBackground}]}>{t('status.welcome', {appName: project.name})}</Text>
     </SafeAreaView>
   );
 };
