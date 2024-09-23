@@ -15,7 +15,6 @@ local.properties
 npm-debug.log
 yarn-error.log
 yarn-lock.json
-package-lock.json
 
 node_modules
 template/js
