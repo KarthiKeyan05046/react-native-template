@@ -66,16 +66,10 @@ const checkDirectory = async () => {
 
 const questions = [
     {
-        type: 'input',
-        name: 'packageName',
-        message: 'What should be the package name?',
-        default: 'com.example.myapp',
-    },
-    {
         type: 'list',
         name: 'packageManager',
         message: 'Which package manager would you like to use?',
-        choices: ['yarn', 'npm'],
+        choices: ['yarn', 'npm', 'bun', 'pnpm'],
         default: 'yarn',
     },
     {
@@ -95,7 +89,7 @@ const initProject = async () => {
     }).start();
     const APP_VERSION = "0.75.2"
     const gitInitOption = skipGitInit ? '--skip-git-init' : '';
-    const query = `npx @react-native-community/cli@latest init ${projectDirectory} --template rn-template-by-karthi --version ${APP_VERSION} --package-name ${packageName} --pm ${packageManager} ${gitInitOption}`;
+    const query = `npx @react-native-community/cli@latest init ${projectDirectory} --template rn-template-by-karthi --version ${APP_VERSION} --pm ${packageManager} ${gitInitOption}`;
     
     try {
         execSync(query, { stdio: 'inherit' });
